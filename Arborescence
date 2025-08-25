@@ -1,0 +1,41 @@
+ecg-iot-app/
+├─ firmware/
+│  ├─ src/
+│  │  └─ main.cpp
+│  └─ platformio.ini
+├─ app/
+│  ├─ app.py
+│  ├─ ws_client.py
+│  ├─ preprocessing/
+│  │  ├─ filters.py
+│  │  ├─ rpeaks.py
+│  │  ├─ frft.py
+│  │  └─ img_convert.py
+│  ├─ io_utils/
+│  │  ├─ loaders.py
+│  │  └─ export.py
+│  ├─ quality/
+│  │  └─ ecg_guard.py
+│  ├─ models/
+│  │  ├─ infer_image.py
+│  │  └─ infer_frft.py
+│  ├─ assets/
+│  │  ├─ models/   # (LFS) place tes .h5 ici
+│  │  └─ examples/
+│  ├─ requirements.txt
+│  └─ tests/
+│     ├─ test_filters.py
+│     └─ test_rpeaks.py
+├─ docs/
+│  ├─ README.md
+│  ├─ INSTALL.md
+│  ├─ USAGE.md
+│  └─ THESIS_NOTES.md
+├─ .github/
+│  └─ workflows/
+│     ├─ ci-python.yml
+│     └─ ci-firmware.yml
+├─ .gitignore
+├─ .gitattributes
+├─ CONTRIBUTING.md
+└─ LICENSE
