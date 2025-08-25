@@ -1,0 +1,9 @@
+streamlit
+websocket-client
+plotly
+numpy
+pandas
+scipy
+pywt
+opencv-python
+tensorflow>=2.12 ; platform_system != "Darwin" or platform_machine != "arm64"
