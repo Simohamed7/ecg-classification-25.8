@@ -1,0 +1,49 @@
+.github/workflows/ci-python.yml
+name: CI Python
+on:
+  push:
+    paths:
+      - "app/**"
+      - ".github/workflows/ci-python.yml"
+  pull_request:
+    paths:
+      - "app/**"
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r app/requirements.txt pytest flake8
+      - name: Lint
+        run: flake8 app --max-line-length=100
+      - name: Tests
+        run: pytest -q app/tests
+.github/workflows/ci-firmware.yml
+name: CI Firmware
+on:
+  push:
+    paths:
+      - "firmware/**"
+      - ".github/workflows/ci-firmware.yml"
+  pull_request:
+    paths:
+      - "firmware/**"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install PlatformIO
+        run: pip install platformio
+      - name: Build
+        working-directory: firmware
+        run: pio run
